@@ -1,5 +1,6 @@
 package com.af.kotlin_mvvm
 
+import android.Manifest
 import android.os.Bundle
 import android.view.animation.AlphaAnimation
 import android.view.animation.Animation
@@ -70,7 +71,7 @@ class SplashActivity : BaseActivity() {
 
     private fun requestWriteExternalStoragePermission() {
         PermissionX.init(this)
-            .permissions("android.permission.WRITE_EXTERNAL_STORAGE")
+            .permissions(Manifest.permission.WRITE_EXTERNAL_STORAGE)
             .onExplainRequestReason { scope, deniedList ->
                 val message = GlobalUtil.getString(R.string.request_permission_picture_processing)
                 scope.showRequestReasonDialog(
@@ -96,7 +97,7 @@ class SplashActivity : BaseActivity() {
 
 
     private fun requestReadPhoneStatePermission() {
-        PermissionX.init(this).permissions("android.permission.READ_EXTERNAL_STORAGE")
+        PermissionX.init(this).permissions(Manifest.permission.READ_EXTERNAL_STORAGE)
             .onExplainRequestReason { scope, deniedList ->
                 val message = GlobalUtil.getString(R.string.request_permission_access_phone_info)
                 scope.showRequestReasonDialog(deniedList, message, GlobalUtil.getString(R.string.ok), GlobalUtil.getString(R.string.cancel))
